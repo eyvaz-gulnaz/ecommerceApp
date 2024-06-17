@@ -22,7 +22,7 @@ const MyHomeStack = () => {
     <Stack.Navigator screenOptions={
       { headerShown: false }
     }>
-      <Stack.Screen name="home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="productDetails" component={ProductDetailsScreen} />
     </Stack.Navigator>
   )

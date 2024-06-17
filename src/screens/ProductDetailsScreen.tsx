@@ -1,7 +1,7 @@
 // ProductDetailsScreen.js
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { NavigationProp, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { IProduct } from '../types/types';
 import LinearGradient from 'react-native-linear-gradient';
 import { Header } from '../components/Header';
@@ -16,12 +16,14 @@ const sizes = ['S', 'M', 'L', 'XL']
 const colors = ['#91a1b0', '#b11d1d', '#1f44a3', '#9f632a', '#1d752b', '#000']
 
 export function ProductDetailsScreen() {
+    const navigation = useNavigation()
 
     const route = useRoute<ProductDetailsRouteProp>();
     const { item } = route.params;
 
     const [selectedSize, setSelectedSize] = useState<string | null>(null)
     const [selectedColor, setSelectedColor] = useState<string | null>(null)
+
 
 
     return (
@@ -60,7 +62,7 @@ export function ProductDetailsScreen() {
                 })}
             </View>
             <View>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity onPress={() => { navigation.navigate('cart') }} style={styles.button}>
                     <Text style={styles.buttonText}>Add to Cart</Text>
                 </TouchableOpacity>
             </View>
